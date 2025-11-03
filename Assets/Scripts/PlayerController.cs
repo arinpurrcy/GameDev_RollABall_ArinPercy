@@ -12,20 +12,25 @@ public class PlayerController : MonoBehaviour
     private int count;
     private float movementX;
     private float movementY;
+    private Camera maincamera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         rb = GetComponent<Rigidbody>();
         count = 0;
 
         SetCountText();
 
         winTextObject.SetActive(false);
+        maincamera = Camera.main;
     }
-    void OnMove(InputValue movementValue)
+    public void Move(InputAction.CallbackContext movementValue)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
+        Vector2 movementVector = movementValue.ReadValue<Vector2>();
 
         movementX = movementVector.x;
         movementY = movementVector.y;
@@ -44,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+        Vector3 movement = Quaternion.Euler(0f, maincamera.transform.eulerAngles.y, 0f) * new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
     }
