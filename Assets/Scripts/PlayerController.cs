@@ -5,6 +5,9 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
+    public float jumph;
+    public float jumpforce;
+    private Vector3 jump;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
 
@@ -27,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
         winTextObject.SetActive(false);
         maincamera = Camera.main;
+
+        jump = new Vector3(0f, jumph, 0f);
+
     }
     public void Move(InputAction.CallbackContext movementValue)
     {
@@ -52,6 +58,18 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = Quaternion.Euler(0f, maincamera.transform.eulerAngles.y, 0f) * new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+    }
+
+    private void Update()
+    {
+        if (rb.linearVelocity.y == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(jump * jumpforce, ForceMode.Impulse);
+            }
+        }
+        rb.AddForce(jump * jumpforce, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
