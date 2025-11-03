@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(jump * jumpforce, ForceMode.Impulse);
             }
         }
-        rb.AddForce(jump * jumpforce, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
