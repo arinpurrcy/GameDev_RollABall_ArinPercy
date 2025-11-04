@@ -12,6 +12,7 @@ TagManager:
   - door3
   - door4
   - door5
+  - shopdoor
   layers:
   - Default
   - TransparentFX

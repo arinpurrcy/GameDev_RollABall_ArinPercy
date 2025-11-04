@@ -104,8 +104,12 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("Level5");
         }
-    }
+        if (other.gameObject.CompareTag("shopdoor"))
+        {
+            SceneManager.LoadScene("shop");
+        }
 
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
