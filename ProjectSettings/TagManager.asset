@@ -6,6 +6,12 @@ TagManager:
   tags:
   - PickUp
   - Enemy
+  - DeathZone
+  - door1
+  - door2
+  - door3
+  - door4
+  - door5
   layers:
   - Default
   - TransparentFX
@@ -42,6 +48,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: DeathZone
+    uniqueID: 27731365
     locked: 0
   m_RenderingLayers:
   - Default

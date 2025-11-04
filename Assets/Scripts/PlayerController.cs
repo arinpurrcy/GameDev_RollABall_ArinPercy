@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -79,7 +80,33 @@ public class PlayerController : MonoBehaviour
             count = count + 1;
             SetCountText();
         }
+        if (other.gameObject.CompareTag("DeathZone"))
+        {
+            SceneManager.LoadScene("minigame");
+        }
+        if (other.gameObject.CompareTag("door1"))
+        {
+            SceneManager.LoadScene("level1");
+        }
+        if (other.gameObject.CompareTag("door2"))
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        if (other.gameObject.CompareTag("door3"))
+        {
+            SceneManager.LoadScene("Level3");
+        }
+        if (other.gameObject.CompareTag("door4"))
+        {
+            SceneManager.LoadScene("Level4");
+        }
+        if (other.gameObject.CompareTag("door5"))
+        {
+            SceneManager.LoadScene("Level5");
+        }
     }
+
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
