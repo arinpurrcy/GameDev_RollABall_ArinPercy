@@ -63,13 +63,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         if (rb.linearVelocity.y == 0)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(jump * jumpforce, ForceMode.Impulse);
             }
+
         }
+
+        // rb.AddForce(jump * jumpforce, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -107,6 +111,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("shopdoor"))
         {
             SceneManager.LoadScene("shop");
+        }
+        if (other.gameObject.CompareTag("lvlcomplete"))
+        {
+            SceneManager.LoadScene("minigame");
         }
 
     }
