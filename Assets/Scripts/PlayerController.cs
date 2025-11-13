@@ -116,7 +116,11 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("minigame");
         }
-
+        if (other.gameObject.CompareTag("Shopexit"))
+        {
+            SceneManager.LoadScene("minigame");
+            
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
