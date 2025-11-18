@@ -19,4 +19,10 @@ public class conversationstarter : MonoBehaviour
         }
 
     }
+    private void OnTriggerExit(Collider other)
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }
+ 
