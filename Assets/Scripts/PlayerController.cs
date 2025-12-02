@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     private Vector3 lastSafePosition;
     private float SavePositionDelay;
+    public PlayableDirector timeline;
 
     private Rigidbody rb;
     private int count;
@@ -64,10 +66,10 @@ public class PlayerController : MonoBehaviour
     {
         countText.text = "Count: " + count.ToString();
 
-        if (count >= 6)
+        if (count == 6)
         {
-            winTextObject.SetActive(true);
-            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            Debug.Log("Timeline should play");
+            timeline.Play();
         }
     }
 
